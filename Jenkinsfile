@@ -28,11 +28,11 @@ pipeline {
                 sh "flutter analyze"
             }
         }
-        stage ('Run Flutter Tests') {
-            steps {
-                sh "flutter test --coverage -r expanded"
-            }
-        }
+//         stage ('Run Flutter Tests') {
+//             steps {
+//                 sh "flutter test --coverage -r expanded"
+//             }
+//         }
         stage ('Flutter Build APK') {
             steps {
                 sh "flutter build apk --split-per-abi"
@@ -52,6 +52,12 @@ pipeline {
                 sh "flutter build ios --release --no-codesign"
             }
         }
+        stage('Flutter Build WEB') {
+            steps {
+                sh "flutter build web"
+            }
+        }
+      
         // stage('Make iOS IPA And Distribute') {
         //         steps {
         //             dir('ios'){
